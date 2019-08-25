@@ -394,7 +394,7 @@ func (s *remoteSealer) makeWork(block *types.Block) {
 // new work to be processed.
 func (s *remoteSealer) notifyWork() {
 	work := s.currentWork
-
+	s.ethash.workFeed.Send(work)
 	// Encode the JSON payload of the notification. When NotifyFull is set,
 	// this is the complete block header, otherwise it is a JSON array.
 	var blob []byte
